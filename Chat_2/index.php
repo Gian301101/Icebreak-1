@@ -4,6 +4,30 @@
 <head>
 <?php
 include('config.php');
+
+
+if (isset($_POST["loginbutton"]) && isset($_POST['username']) && isset($_POST['password'])){
+
+    $username=mysqli_real_escape_string($link, $_POST['username']);
+    
+    $password=mysqli_real_escape_string($link, $_POST['password']);
+
+    $sql="INSERT INTO admin_login (admin_name,admin_password) VALUES ('$username','$password')";
+
+    if(mysqli_query($link, $sql)){
+    echo "Records added successfully.";
+    } 
+    else {
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+    }
+
+}
+
+else
+{
+ echo "Errore";
+}
+
 ?>
 <style>
 body {
